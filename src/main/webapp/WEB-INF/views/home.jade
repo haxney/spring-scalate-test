@@ -1,2 +1,7 @@
 -@ val title: String = "Example homepage"
 h1 Jade - node template engine
+p The request attribute names are:
+ul
+  - for (attr <-request.getAttributeNames)
+    li= attr
+
