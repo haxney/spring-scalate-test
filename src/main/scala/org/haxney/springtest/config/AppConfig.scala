@@ -1,8 +1,7 @@
 package org.haxney.springtest
 package config
 
-import org.haxney.springtest.Home
-import org.springframework.context.annotation.{Bean,Configuration,ImportResource}
+import org.springframework.context.annotation.{Bean, Configuration, ImportResource}
 import org.springframework.beans.factory.annotation.Value
 import org.slf4j.LoggerFactory
 
@@ -17,7 +16,7 @@ class AppConfig {
   @Bean
   def scalateView = {
     val res = new org.fusesource.scalate.spring.view.ScalateViewResolver
-    res.setPrefix("/WEB-INF/scalate/layouts/")
+    res.setPrefix("/WEB-INF/views/")
     res.setSuffix(".jade")
     res
   }

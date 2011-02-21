@@ -21,7 +21,7 @@ class Home {
   @RequestMapping(value = Array("/"))
   def home = {
     println("HomeController: Passing through...")
-    "home"
+    "layout:home"
   }
 
   @RequestMapping(value = Array("/compare"), method = Array(RequestMethod.GET))
@@ -42,7 +42,7 @@ class Home {
     val output = "According to our Comparator, '" + input1 + "' is " + inEnglish + " '" + input2 + "'"
 
     model.addAttribute("output", output)
-    "compareResult"
+    "layout:compareResult"
   }
 }
 
