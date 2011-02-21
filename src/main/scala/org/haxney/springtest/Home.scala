@@ -1,10 +1,9 @@
 package org.haxney.springtest
 
 import java.util.Comparator
-import org.springframework.beans.factory.annotation.Autowired
 import org.slf4j.LoggerFactory
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.{Controller, Service, Component}
-import org.springframework.web.servlet.ModelAndView
 import org.springframework.ui.Model
 import org.springframework.web.bind.annotation.{RequestMapping, RequestMethod, RequestParam}
 
