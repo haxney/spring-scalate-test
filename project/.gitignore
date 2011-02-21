@@ -1,0 +1,5 @@
+/boot
+/build/target
+/plugins/lib_managed
+/plugins/src_managed
+/plugins/target
