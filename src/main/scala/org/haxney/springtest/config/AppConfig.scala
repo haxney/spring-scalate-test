@@ -1,13 +1,14 @@
 package org.haxney.springtest
 package config
 
-import org.springframework.context.annotation.{Bean, Configuration, ImportResource}
 import org.springframework.beans.factory.annotation.Value
+import org.springframework.context.annotation.{Bean, Configuration, Import, Feature, FeatureConfiguration}
 import org.springframework.web.servlet.mvc.annotation.{DefaultAnnotationHandlerMapping, AnnotationMethodHandlerAdapter}
+import org.springframework.web.servlet.config.MvcDefaultServletHandler
 import org.slf4j.LoggerFactory
 
 @Configuration
-@ImportResource(Array("classpath:/mvc-resources.xml"))
+@Import(Array(classOf[FeatureConfig]))
 class AppConfig {
 
   val logger = LoggerFactory.getLogger(classOf[AppConfig])
@@ -32,4 +33,10 @@ class AppConfig {
     res.setSuffix(".jade")
     res
   }
+}
+
+@FeatureConfiguration
+class FeatureConfig {
+  @Feature
+  def defaultHandler = new MvcDefaultServletHandler
 }

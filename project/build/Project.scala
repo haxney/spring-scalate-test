@@ -24,15 +24,13 @@ class Project(info: ProjectInfo) extends DefaultWebProject(info) with Precompile
            "http://repo.fusesource.com/nexus/content/repositories/snapshots"
   lazy val java_net_repo = "Java.net Repository" at
            "http://download.java.net/maven/2"
+  lazy val springMilestone = "Spring Framework Milestone Repository" at "http://maven.springframework.org/milestone"
 
   lazy val scalateSpring = "org.fusesource.scalate" % "scalate-spring-mvc" % "1.5.0-SNAPSHOT"
-
   lazy val servlet       = "javax.servlet"          % "servlet-api"        % "2.5"
   lazy val logback       = "ch.qos.logback"         % "logback-classic"    % "0.9.26"
   lazy val cglib         = "cglib"                  % "cglib"              % "2.2"
-
   // to get jetty-run working in sbt
   lazy val jetty_webapp  = "org.eclipse.jetty"      % "jetty-webapp"       % "7.0.2.RC0" % "test"
-
-  lazy val spring        = "org.springframework"    % "spring-webmvc"      % "3.0.5.RELEASE"
+  lazy val spring        = "org.springframework"    % "spring-webmvc"      % "3.1.0.M1"
 }
