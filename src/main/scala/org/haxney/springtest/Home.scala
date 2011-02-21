@@ -18,10 +18,7 @@ class Home {
   }
 
   @RequestMapping(value = Array("/"))
-  def home = {
-    println("HomeController: Passing through...")
-    "layout:home"
-  }
+  def home = "layout:home"
 
   @RequestMapping(value = Array("/compare"), method = Array(RequestMethod.GET))
   def compare(@RequestParam("input1")
