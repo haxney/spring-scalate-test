@@ -9,7 +9,6 @@ import org.springframework.web.servlet.config.MvcDefaultServletHandler
 import org.slf4j.LoggerFactory
 
 @Configuration
-@Import(Array(classOf[FeatureConfig]))
 class AppConfig {
 
   val logger = LoggerFactory.getLogger(classOf[AppConfig])

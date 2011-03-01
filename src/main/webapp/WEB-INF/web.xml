@@ -24,7 +24,10 @@
          and fully-qualified @Configuration classes -->
     <init-param>
       <param-name>contextConfigLocation</param-name>
-      <param-value>org.haxney.springtest.config.AppConfig</param-value>
+      <param-value>
+        org.haxney.springtest.config.AppConfig
+        org.haxney.springtest.config.FeatureConfig
+      </param-value>
     </init-param>
   </servlet>
 
