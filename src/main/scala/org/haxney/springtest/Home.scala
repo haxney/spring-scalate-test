@@ -11,11 +11,8 @@ import org.springframework.web.bind.annotation.{RequestMapping, RequestMethod, R
 class Home {
   val logger = LoggerFactory.getLogger(classOf[Home])
 
-  var comparator: Comparator[String] = new CaseInsensitiveComparator
-
-  def setComparator(c: Comparator[String]) = {
-    this.comparator = c
-  }
+  @Autowired
+  var comparator: Comparator[String] = _
 
   @RequestMapping(value = Array("/"))
   def home = "layout:home"
