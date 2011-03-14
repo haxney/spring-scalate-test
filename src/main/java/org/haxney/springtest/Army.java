@@ -11,6 +11,13 @@ public class Army {
 
     int experience;
 
-    @RelatedTo(type = RelTypes.OWNER, direction = Direction.OUTGOING)
+    @RelatedTo(type = "OWNER", direction = Direction.OUTGOING)
     Country owner;
+
+    public Army(String name, int exp, Country owner) {
+        this.name = name;
+        this.experience = exp;
+        this.owner = owner;
+    }
+    public Army() {}
 }
