@@ -14,8 +14,8 @@ import org.springframework.web.servlet.view.RedirectView
 @Controller
 class Home {
   @Autowired
-  val finderFactory: FinderFactory
-  val logger = LoggerFactory.getLogger(classOf[Home])
+  val finderFactory: FinderFactory = null
+  val log = LoggerFactory.getLogger(classOf[Home])
 
   @Autowired
   var comparator: Comparator[String] = _
@@ -47,8 +47,8 @@ class Home {
   @Transactional
   @RequestMapping(value = Array("/army/setup"))
   def setupArmies = {
-    val prussia = Country("Prussia", 1000000)
-    val firstDiv = Army("First Division", 4, prussia)
+    val prussia = new Country("Prussia", 1000000)
+    val firstDiv = new Army("First Division", 4, prussia)
     new RedirectView("/country/Prussia", true)
   }
 
@@ -60,12 +60,11 @@ class Home {
   }
 
   def finder = finderFactory.createNodeEntityFinder(classOf[Country])
-
   def findCountryNamed(name: String) = finder.findByPropertyValue("countries", "name", name)
-
 }
 
 @Service
 class CaseInsensitiveComparator extends Comparator[String] {
   override def compare(s1: String, s2: String) = String.CASE_INSENSITIVE_ORDER.compare(s1, s2)
 }
+
