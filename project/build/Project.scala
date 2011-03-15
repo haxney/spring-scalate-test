@@ -17,12 +17,13 @@
  */
 import sbt._
 import org.fusesource.scalate.sbt._
+import org.haxney.aspectj.sbt.AspectJ
 
-class Project(info: ProjectInfo) extends DefaultWebProject(info) with PrecompilerWebProject {
+class Project(info: ProjectInfo) extends DefaultWebProject(info) with PrecompilerWebProject with AspectJ {
 
   lazy val fusesource_snapshot_repo = "FuseSource Snapshots" at "http://repo.fusesource.com/nexus/content/repositories/snapshots"
   lazy val java_net_repo = "Java.net Repository" at "http://download.java.net/maven/2"
-  lazy val springMilestone = "Spring Framework Milestone Repository" at "http://maven.springframework.org/milestone"
+  lazy val springMilestones = "Spring Framework Milestone Repository" at "http://maven.springframework.org/milestone"
   lazy val jbossRepository   = "jboss" at "https://repository.jboss.org/nexus/content/groups/public"
   lazy val neo_repo     = "Neo4j Maven Repository" at "http://m2.neo4j.org"
 
@@ -33,9 +34,10 @@ class Project(info: ProjectInfo) extends DefaultWebProject(info) with Precompile
   // to get jetty-run working in sbt
   lazy val jetty_webapp  = "org.eclipse.jetty"        % "jetty-webapp"       % "7.0.2.RC0" % "test"
   lazy val spring        = "org.springframework"      % "spring-webmvc"      % "3.1.0.M1"
-  lazy val neo           = "org.neo4j"                % "neo4j-kernel"       % "1.3-SNAPSHOT"
-  lazy val data_graph    = "org.springframework.data" % "spring-data-neo4j"  % "1.0.0.M3"
-  lazy val aspectj       = "org.aspectj"              % "aspectjrt"          % "1.6.11.M2"
+  lazy val springAspects = "org.springframework"      % "spring-aspects"     % "3.1.0.M1" % "compile; aspectj"
+  lazy val neo           = "org.neo4j"                % "neo4j-kernel"       % "1.3.M04" % "compile; aspectj"
+  lazy val data_graph    = "org.springframework.data" % "spring-data-neo4j"  % "1.0.0.M3" % "compile; aspectj"
+  lazy val aspectjDep    = "org.aspectj"              % "aspectjrt"          % "1.6.11.M2"
   lazy val slf4j         = "org.slf4j"                % "jcl-over-slf4j"     % "1.6.1"
   lazy val commons_log   = "commons-logging"          % "commons-logging"    % "1.1.1"     % "provided"
 
@@ -44,4 +46,6 @@ class Project(info: ProjectInfo) extends DefaultWebProject(info) with Precompile
       <exclude org="com.sun.jdmk"/>
       <exclude org="com.sun.jmx"/>
     </dependencies>
+
+//  override def compileOrder = CompileOrder.JavaThenScala
 }

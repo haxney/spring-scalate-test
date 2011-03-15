@@ -18,10 +18,11 @@
 import sbt._
 
 class Plugins(info: ProjectInfo) extends PluginDefinition(info) {
-  
+
   lazy val fusesource_snapshot_repo = "FuseSource Snapshots" at
            "http://repo.fusesource.com/nexus/content/repositories/snapshots"
 
   lazy val scalate_plugin = "org.fusesource.scalate" % "sbt-scalate-plugin" % "1.4.0"
+  lazy val aspectj_plugin = "org.haxney.aspectj" % "aspectj-sbt-plugin" % "0.1"
 
 }
