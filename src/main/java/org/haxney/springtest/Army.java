@@ -7,12 +7,12 @@ import org.springframework.data.graph.core.Direction;
 
 @NodeEntity
 public class Army {
-    String name;
+    private String name;
 
-    int experience;
+    private int experience;
 
     @RelatedTo(type = "OWNER", direction = Direction.OUTGOING)
-    Country owner;
+    private Country owner;
 
     public Army(String name, int exp, Country owner) {
         this.name = name;
@@ -20,4 +20,13 @@ public class Army {
         this.owner = owner;
     }
     public Army() {}
+
+    public String name() { return this.name; }
+    public void name_$eq(String inName) { this.name = inName; }
+
+    public int experience() { return this.experience; }
+    public void experience_$eq(int inExp) { this.experience = inExp; }
+
+    public Country owner() { return this.owner; }
+    public void owner_$eq(Country inOwner) { this.owner = inOwner; }
 }

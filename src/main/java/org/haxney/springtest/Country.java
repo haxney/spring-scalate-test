@@ -9,16 +9,24 @@ import java.util.Set;
 @NodeEntity
 public class Country {
     @Indexed(indexName = "countries")
-    public String name;
-
-    public int population;
+    private String name;
+    private int population;
 
     @RelatedTo(type = "OWNER", elementClass = Army.class, direction = Direction.INCOMING)
-    public Set<Army> armies;
+    private Set<Army> armies;
 
     public Country(String name, int pop) {
         this.name = name;
         this.population = pop;
     }
     public Country() {}
+
+    public String name() { return this.name; }
+    public void name_$eq(String inName) { this.name = inName; }
+
+    public int population() { return this.population; }
+    public void population_$eq(int inPop) { this.population = inPop; }
+
+    public Set<Army> armies() { return this.armies; }
+    public void armies_$eq(Set<Army> inArmies) { this.armies = inArmies; }
 }
