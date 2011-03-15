@@ -1,6 +1,7 @@
 package org.haxney.springtest
 package config
 
+import org.fusesource.scalate.spring.view.ScalateViewResolver
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.context.annotation.{Bean, Configuration, ImportResource, Feature, FeatureConfiguration, ComponentScanSpec}
 import org.springframework.core.`type`.filter.AnnotationTypeFilter
@@ -27,7 +28,7 @@ class AppConfig extends Neo4jConfiguration {
 
   @Bean
   def scalateView = {
-    val res = new org.fusesource.scalate.spring.view.ScalateViewResolver
+    val res = new ScalateViewResolver
     res.setPrefix("/WEB-INF/views/")
     res.setSuffix(".jade")
     res
